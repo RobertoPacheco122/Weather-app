@@ -5,8 +5,121 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Weather App</title>
+
+  <link rel="stylesheet" href="./assets/css/reset.css">
+  <link rel="stylesheet" href="./assets/css/utility.css">
+  <link rel="stylesheet" href="./assets/css/icons.css">
+  <link rel="stylesheet" href="./assets/css/index.css">
 </head>
 <body>
+  <div class="app">
+    <main class="main">
+      <div class="main--container">
+        <section class="main--container--overview">
+          <header class="main__header">
+            <div class="main--container--date">
+              <p class="main__text main__text--date bold" data-year></p>
+              <p class="main__text grey--text" data-date></p>
+            </div>
+            <div class="main--container--search">
+              <form class="main__form">
+                <div class="main--container--location">
+                  <i class="main__icon--search icon icon--search"></i>
+                  <input type="text" id="pokename" name="pokename" class="main__input--text" placeholder="Procure por uma cidade">
+                </div>
+              </form>
+              <div class="main--container--icon">
+                <i class="main__icon icon icon--bell"></i>
+              </div>
+              <div class="main--container--icon">
+                <i class="main__icon icon icon--user"></i>
+              </div>
+            </div>
+          </header>
+
+          <section class="main--container--today">
+            <h2 class="main__subtitle bold">Visão geral do momento</h2>
+            <ul class="main__list">
+              <li class="main__item">
+                <div class="main__item--image">
+                  <i class="main__icon icon icon--wind"></i>
+                </div>
+                <div class="main__item--content">
+                  <p class="main__text main__text--itemTitle grey--text">Velocidade do Vento</p>
+                  <p class="main__text main__text--info bold" data-wind></p>
+                </div>
+              </li>
+              <li class="main__item">
+                <div class="main__item--image">
+                  <i class="main__icon icon icon--rain"></i>
+                </div>
+                <div class="main__item--content">
+                  <p class="main__text main__text--itemTitle grey--text">Chance de Chuva</p>
+                  <p class="main__text main__text--info bold" data-rain-chance></p>
+                </div>
+              </li>
+              <li class="main__item">
+                <div class="main__item--image">
+                  <i class="main__icon icon icon--pressure"></i>
+                </div>
+                <div class="main__item--content">
+                  <p class="main__text main__text--itemTitle grey--text">Pressão Atmosférica</p>
+                  <p class="main__text main__text--info bold" data-pressure></p>
+                </div>
+              </li>
+              <li class="main__item">
+                <div class="main__item--image">
+                  <i class="main__icon icon icon--sun"></i>
+                </div>
+                <div class="main__item--content">
+                  <p class="main__text main__text--itemTitle grey--text">Índice de UV</p>
+                  <p class="main__text main__text--info bold" data-uv></p>
+                </div>
+              </li>
+              <li class="main__item">
+                <div class="main__item--image">
+                  <i class="main__icon icon icon--humidity"></i>
+                </div>
+                <div class="main__item--content">
+                  <p class="main__text main__text--itemTitle grey--text">Humidade do ar</p>
+                  <p class="main__text main__text--info bold" data-humidity></p>
+                </div>
+              </li>
+              <li class="main__item">
+                <div class="main__item--image">
+                  <i class="main__icon icon icon--precipitation"></i>
+                </div>
+                <div class="main__item--content">
+                  <p class="main__text main__text--itemTitle grey--text">Quantidade de precipitação</p>
+                  <p class="main__text main__text--info bold" data-precipitation></p>
+                </div>
+              </li>
+            </ul>
+          </section>
+        </section>
+        <section class="main--container--infos">
+          <header class="main__header--infos">
+            <div class="main--container--locationData">
+              <p class="main__text main__text--location bold" data-location></p>
+              <p class="main__text grey--text" data-region></p>
+            </div>
+            <div class="main--container--locationHour">
+              <p class="main__text bold" data-time></p>
+            </div>
+          </header>
+          <section class="main__section main__section--weather">
+            <i class="main__icon main__icon--weather icon icon--rain" data-weather-icon></i>
+            <div class="main--container--weatherData">
+              <p class="main__text main__text--degrees bold" data-degrees></p>
+              <p class="main__text grey--text" data-weather-condition></p>
+            </div>
+          </section>
+        </section>
+      </div>
+      
+    </main>
+  </div>
+
   <script src="./assets/js/index.js"></script>
 </body>
 </html>
