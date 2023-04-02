@@ -151,6 +151,19 @@ function renderLocationWeather(
   degrees.innerText = `${temp_c}° C`;
 }
 
+async function renderAllWeatherInfos(location) {
+  const forecastInfo = await getWeatherInfo(location, "forecast.json");
+  const locationObject = await forecastInfo.location;
+  const currentObject = await forecastInfo.current;
+  const forecastNowObject = await forecastInfo.forecast.forecastday[0].hour[
+    new Date().getHours()
+  ];
+
+  renderOverview(currentObject, forecastNowObject);
+  renderLocationWeather(locationObject, currentObject, currentObject.condition);
+}
+
 const dateInfos = getDateInfo();
 
 renderDateInfos(dateInfos);
+renderAllWeatherInfos("Rio de Janeiro");
