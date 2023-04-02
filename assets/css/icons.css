@@ -6,12 +6,12 @@
   background-image: url("../img/icons/usuario.svg");
 }
 
-.icon--bell {
-  background-image: url("../img/icons/sino.svg");
+.icon--marker {
+  background-image: url("../img/icons/marcador.svg");
 }
 
-.icon--rain {
-  background-image: url("../img/icons/chuva.png");
+.icon--thermometer {
+  background-image: url("../img/icons/termometro.png");
 }
 
 .icon--pressure {
