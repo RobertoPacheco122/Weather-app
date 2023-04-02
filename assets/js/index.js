@@ -84,3 +84,17 @@ function getDateInfo() {
     year: date.getFullYear(),
   };
 }
+
+function renderDateInfos({ dayName, dayOfMonth, monthName, year }) {
+  const yearAndMonth = document.querySelector("[data-year]");
+  const fullDate = document.querySelector("[data-date]");
+
+  yearAndMonth.innerText = `${monthName} ${year}`;
+  fullDate.innerText = `${dayName}, ${
+    monthName[0] + monthName[1] + monthName[2]
+  } ${dayOfMonth}, ${year}`;
+}
+
+const dateInfos = getDateInfo();
+
+renderDateInfos(dateInfos);
