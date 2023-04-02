@@ -12,7 +12,7 @@
 
 .main--container--overview,
 .main--container--infos {
-  padding: 2rem 4rem;
+  padding: 2rem 3rem;
 }
 
 .main__header {
@@ -55,7 +55,7 @@
 
 .main__icon--search,
 .icon--user,
-.icon--bell {
+.icon--marker {
   height: 20px;
   width: 20px;
 }
@@ -72,6 +72,7 @@
 
 .main__subtitle {
   margin-bottom: 1rem;
+  font-size: 1.2rem;
 }
 
 .main__list {
@@ -136,6 +137,20 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
+}
+
+.main__item--rain {
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+}
+
+.main--container--progress {
+  height: 30px;
+  background-color: var(--progress-bg);
+  border-radius: 30px;
 }
 
 .grey--text {
