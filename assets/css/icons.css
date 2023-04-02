@@ -33,3 +33,10 @@
 .icon--humidity {
   background-image: url("../img/icons/umidade.png");
 }
+
+.icon--sunset {
+  background-image: url("../img/icons/por-do-sol.png");
+}
+.icon--sunrise {
+  background-image: url("../img/icons/nascerdosol.png");
+}
