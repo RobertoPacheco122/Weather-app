@@ -25,11 +25,11 @@
               <form class="main__form">
                 <div class="main--container--location">
                   <i class="main__icon--search icon icon--search"></i>
-                  <input type="text" id="pokename" name="pokename" class="main__input--text" placeholder="Procure por uma cidade">
+                  <input type="text" id="pokename" name="pokename" class="main__input--text" placeholder="Procure por uma localidade">
                 </div>
               </form>
               <div class="main--container--icon">
-                <i class="main__icon icon icon--bell"></i>
+                <i class="main__icon icon icon--marker"></i>
               </div>
               <div class="main--container--icon">
                 <i class="main__icon icon icon--user"></i>
@@ -51,11 +51,11 @@
               </li>
               <li class="main__item">
                 <div class="main__item--image">
-                  <i class="main__icon icon icon--rain"></i>
+                  <i class="main__icon icon icon--thermometer"></i>
                 </div>
                 <div class="main__item--content">
-                  <p class="main__text main__text--itemTitle grey--text">Chance de Chuva</p>
-                  <p class="main__text main__text--info bold" data-rain-chance></p>
+                  <p class="main__text main__text--itemTitle grey--text">Sensação Térmica</p>
+                  <p class="main__text main__text--info bold" data-degrees-sensation></p>
                 </div>
               </li>
               <li class="main__item">
@@ -108,11 +108,14 @@
             </div>
           </header>
           <section class="main__section main__section--weather">
-            <i class="main__icon main__icon--weather icon icon--rain" data-weather-icon></i>
+            <i class="main__icon main__icon--weather icon" data-weather-icon></i>
             <div class="main--container--weatherData">
               <p class="main__text main__text--degrees bold" data-degrees></p>
               <p class="main__text grey--text" data-weather-condition></p>
             </div>
+          </section>
+          <section class="main__section main__section--rain" data-rain>
+            <p class="main__subtitle bold">Chance de chuva</p>
           </section>
         </section>
       </div>
