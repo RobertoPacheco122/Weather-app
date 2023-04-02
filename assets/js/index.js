@@ -102,9 +102,12 @@ function getDateInfo() {
   };
 }
 
-function renderDateInfos({ dayName, dayOfMonth, monthName, year }) {
+function renderDateInfos() {
   const yearAndMonth = document.querySelector("[data-year]");
   const fullDate = document.querySelector("[data-date]");
+  const date = getDateInfo();
+
+  const { monthName, dayName, dayOfMonth, year } = date;
 
   yearAndMonth.innerText = `${monthName} ${year}`;
   fullDate.innerText = `${dayName}, ${
@@ -112,19 +115,23 @@ function renderDateInfos({ dayName, dayOfMonth, monthName, year }) {
   } ${dayOfMonth}, ${year}`;
 }
 
-function renderOverview(
-  { wind_kph, pressure_mb, uv, humidity, precip_mm },
-  { chance_of_rain }
-) {
+function renderOverview({
+  wind_kph,
+  pressure_mb,
+  uv,
+  humidity,
+  precip_mm,
+  feelslike_c,
+}) {
   const windSpeed = document.querySelector("[data-wind]");
-  const rainChance = document.querySelector("[data-rain-chance]");
+  const thermicSensation = document.querySelector("[data-degrees-sensation]");
   const pressure = document.querySelector("[data-pressure]");
   const uvIndex = document.querySelector("[data-uv]");
   const humidityCondition = document.querySelector("[data-humidity]");
   const precipitation = document.querySelector("[data-precipitation]");
 
   windSpeed.innerText = `${wind_kph} km/h`;
-  rainChance.innerText = `${chance_of_rain}%`;
+  thermicSensation.innerText = `${feelslike_c}° C`;
   pressure.innerText = `${pressure_mb} mbar`;
   uvIndex.innerText = `${uv}`;
   humidityCondition.innerText = `${humidity}%`;
@@ -151,19 +158,53 @@ function renderLocationWeather(
   degrees.innerText = `${temp_c}° C`;
 }
 
-async function renderAllWeatherInfos(location) {
-  const forecastInfo = await getWeatherInfo(location, "forecast.json");
-  const locationObject = await forecastInfo.location;
-  const currentObject = await forecastInfo.current;
-  const forecastNowObject = await forecastInfo.forecast.forecastday[0].hour[
-    new Date().getHours()
-  ];
+function renderRainExpectation(forecast, hourNow) {
+  const rainSection = document.querySelector("[data-rain]");
+  const list = document.createElement("ul");
+  list.classList.add("main__list--rain");
 
-  renderOverview(currentObject, forecastNowObject);
-  renderLocationWeather(locationObject, currentObject, currentObject.condition);
+  const hours = forecast.forecast.forecastday[0].hour;
+  const maxIterations = 4;
+
+  for (let i = 1; i < maxIterations; i++) {
+    const listItem = document.createElement("li");
+    listItem.classList.add("main__item--rain");
+    const chanceOfRain = hours[hourNow + i].chance_of_rain;
+
+    listItem.innerHTML = `
+      <p class="main__text grey--text">${hourNow + i}:00</p>
+      <div class="main--container--progress" style="background: linear-gradient(to right, #8cb2fb 0%, #8cb2fb ${chanceOfRain}%, #2b4366 ${chanceOfRain}%)"></div>
+      <p class="main__text grey--text"> ${chanceOfRain}%</p>
+    `;
+
+    list.appendChild(listItem);
+  }
+
+  rainSection.appendChild(list);
 }
 
-const dateInfos = getDateInfo();
+async function renderAllWeatherInfos(location) {
+  try {
+    const hourNow = new Date().getHours();
+    const forecastInfo = await getWeatherInfo(location, "forecast.json");
+    const locationObject = await forecastInfo.location;
+    const currentObject = await forecastInfo.current;
 
-renderDateInfos(dateInfos);
+    console.log(forecastInfo);
+    console.log(locationObject);
+    console.log(currentObject);
+
+    renderOverview(currentObject);
+    renderLocationWeather(
+      locationObject,
+      currentObject,
+      currentObject.condition
+    );
+    renderRainExpectation(forecastInfo, hourNow);
+  } catch (error) {
+    console.log(error);
+  }
+}
+
+renderDateInfos();
 renderAllWeatherInfos("Rio de Janeiro");
