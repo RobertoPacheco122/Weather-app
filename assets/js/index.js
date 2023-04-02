@@ -112,6 +112,25 @@ function renderDateInfos({ dayName, dayOfMonth, monthName, year }) {
   } ${dayOfMonth}, ${year}`;
 }
 
+function renderOverview(
+  { wind_kph, pressure_mb, uv, humidity, precip_mm },
+  { chance_of_rain }
+) {
+  const windSpeed = document.querySelector("[data-wind]");
+  const rainChance = document.querySelector("[data-rain-chance]");
+  const pressure = document.querySelector("[data-pressure]");
+  const uvIndex = document.querySelector("[data-uv]");
+  const humidityCondition = document.querySelector("[data-humidity]");
+  const precipitation = document.querySelector("[data-precipitation]");
+
+  windSpeed.innerText = `${wind_kph} km/h`;
+  rainChance.innerText = `${chance_of_rain}%`;
+  pressure.innerText = `${pressure_mb} mbar`;
+  uvIndex.innerText = `${uv}`;
+  humidityCondition.innerText = `${humidity}%`;
+  precipitation.innerText = `${precip_mm} mm`;
+}
+
 const dateInfos = getDateInfo();
 
 renderDateInfos(dateInfos);
