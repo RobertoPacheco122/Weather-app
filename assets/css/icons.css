@@ -1,0 +1,35 @@
+.icon--search {
+  background-image: url("../img/icons/procurar.svg");
+}
+
+.icon--user {
+  background-image: url("../img/icons/usuario.svg");
+}
+
+.icon--bell {
+  background-image: url("../img/icons/sino.svg");
+}
+
+.icon--rain {
+  background-image: url("../img/icons/chuva.png");
+}
+
+.icon--pressure {
+  background-image: url("../img/icons/pressao.png");
+}
+
+.icon--wind {
+  background-image: url("../img/icons/vento.png");
+}
+
+.icon--sun {
+  background-image: url("../img/icons/sol.png");
+}
+
+.icon--precipitation {
+  background-image: url("../img/icons/pingos-de-chuva.png");
+}
+
+.icon--humidity {
+  background-image: url("../img/icons/umidade.png");
+}
