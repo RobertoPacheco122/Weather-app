@@ -38,14 +38,14 @@
           </header>
 
           <section class="main--container--today">
-            <h2 class="main__subtitle bold">Visão geral do momento</h2>
+            <h2 class="main__subtitle bold">Previsão de hoje</h2>
             <ul class="main__list">
               <li class="main__item">
                 <div class="main__item--image">
                   <i class="main__icon icon icon--wind"></i>
                 </div>
                 <div class="main__item--content">
-                  <p class="main__text main__text--itemTitle grey--text">Velocidade do Vento</p>
+                  <p class="main__text main__text--itemTitle grey--text">Velocidade dos Ventos</p>
                   <p class="main__text main__text--info bold" data-wind></p>
                 </div>
               </li>
@@ -81,7 +81,7 @@
                   <i class="main__icon icon icon--humidity"></i>
                 </div>
                 <div class="main__item--content">
-                  <p class="main__text main__text--itemTitle grey--text">Humidade do ar</p>
+                  <p class="main__text main__text--itemTitle grey--text">Humidade do Ar</p>
                   <p class="main__text main__text--info bold" data-humidity></p>
                 </div>
               </li>
@@ -90,7 +90,7 @@
                   <i class="main__icon icon icon--precipitation"></i>
                 </div>
                 <div class="main__item--content">
-                  <p class="main__text main__text--itemTitle grey--text">Quantidade de precipitação</p>
+                  <p class="main__text main__text--itemTitle grey--text">Quantidade de Precipitação</p>
                   <p class="main__text main__text--info bold" data-precipitation></p>
                 </div>
               </li>
@@ -140,12 +140,15 @@
               </li>
             </ul>
           </section>
+          <section class="main__section main__section--credits" style="display: flex;">
+            <p class="main__text">Powered by WeatherAPI.com</p>
+            
+            <a href="https://www.weatherapi.com/" title="Free Weather API"><img src='//cdn.weatherapi.com/v4/images/weatherapi_logo.png' alt="Weather data by WeatherAPI.com" border="0"></a>
+          </section>
         </section>
       </div>
-      
     </main>
   </div>
-
-  <script src="./assets/js/index.js"></script>
+  <script type="module" src="./assets/js/index.js"></script>
 </body>
 </html>
