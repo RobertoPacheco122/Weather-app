@@ -24,7 +24,8 @@
 .main__header,
 .main--container--search,
 .main__header--infos,
-.main--container--weatherData {
+.main--container--weatherData,
+.main__section--credits {
   align-items: center;
   display: flex;
   justify-content: space-between;
@@ -95,7 +96,8 @@
 .main__subtitle,
 .main__text--itemTitle,
 .main__text--location,
-.main__icon--weather {
+.main__icon--weather,
+.main__section--sun {
   margin-bottom: 1rem;
 }
 
