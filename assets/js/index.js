@@ -131,6 +131,26 @@ function renderOverview(
   precipitation.innerText = `${precip_mm} mm`;
 }
 
+function renderLocationWeather(
+  { country, name, region, localtime },
+  { temp_c },
+  { text, icon }
+) {
+  const cityLocation = document.querySelector("[data-location]");
+  const regionLocation = document.querySelector("[data-region]");
+  const weatherIcon = document.querySelector("[data-weather-icon]");
+  const weatherCondition = document.querySelector("[data-weather-condition]");
+  const degrees = document.querySelector("[data-degrees]");
+  const localTime = document.querySelector("[data-time]");
+
+  cityLocation.innerText = name;
+  regionLocation.innerText = `${region}, ${country}`;
+  localTime.innerText = localtime.replace(/\d{4}\-\d{2}\-\d{2} /g, "");
+  weatherIcon.style.backgroundImage = `url(${icon})`;
+  weatherCondition.innerText = text;
+  degrees.innerText = `${temp_c}° C`;
+}
+
 const dateInfos = getDateInfo();
 
 renderDateInfos(dateInfos);
