@@ -158,6 +158,15 @@ function renderLocationWeather(
   degrees.innerText = `${temp_c}° C`;
 }
 
+function renderSunsetAndRise(forecast) {
+  const sunriseElement = document.querySelector("[data-time-sunrise]");
+  const sunsetElement = document.querySelector("[data-time-sunset]");
+  const { sunrise, sunset } = forecast.forecast.forecastday[0].astro;
+
+  sunriseElement.innerText = sunrise;
+  sunsetElement.innerText = sunset;
+}
+
 function renderRainExpectation(forecast, hourNow) {
   const rainSection = document.querySelector("[data-rain]");
   const list = document.createElement("ul");
@@ -190,10 +199,6 @@ async function renderAllWeatherInfos(location) {
     const locationObject = await forecastInfo.location;
     const currentObject = await forecastInfo.current;
 
-    console.log(forecastInfo);
-    console.log(locationObject);
-    console.log(currentObject);
-
     renderOverview(currentObject);
     renderLocationWeather(
       locationObject,
@@ -201,6 +206,7 @@ async function renderAllWeatherInfos(location) {
       currentObject.condition
     );
     renderRainExpectation(forecastInfo, hourNow);
+    renderSunsetAndRise(forecastInfo);
   } catch (error) {
     console.log(error);
   }
