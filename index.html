@@ -25,21 +25,36 @@
               <form class="main__form">
                 <div class="main--container--location">
                   <i class="main__icon--search icon icon--search"></i>
-                  <input type="text" id="pokename" name="pokename" class="main__input--text" placeholder="Procure por uma localidade">
+                  <input type="text" id="location" name="location" class="main__input--text" placeholder="Procure por uma localidade">
                 </div>
               </form>
               <div class="main--container--icon">
                 <i class="main__icon icon icon--marker"></i>
               </div>
-              <div class="main--container--icon">
-                <i class="main__icon icon icon--user"></i>
-              </div>
             </div>
           </header>
 
           <section class="main--container--today">
-            <h2 class="main__subtitle bold">Previsão de hoje</h2>
+            <h2 class="main__subtitle bold">Visão geral do dia</h2>
             <ul class="main__list">
+              <li class="main__item">
+                <div class="main__item--image">
+                  <i class="main__icon icon icon--min--temperature"></i>
+                </div>
+                <div class="main__item--content">
+                  <p class="main__text main__text--itemTitle grey--text">Temperatura Mínima</p>
+                  <p class="main__text main__text--info bold" data-min-temperature></p>
+                </div>
+              </li>
+              <li class="main__item">
+                <div class="main__item--image">
+                  <i class="main__icon icon icon--max--temperature"></i>
+                </div>
+                <div class="main__item--content">
+                  <p class="main__text main__text--itemTitle grey--text">Temperatura Máxima</p>
+                  <p class="main__text main__text--info bold" data-max-temperature></p>
+                </div>
+              </li>
               <li class="main__item">
                 <div class="main__item--image">
                   <i class="main__icon icon icon--wind"></i>
@@ -47,24 +62,6 @@
                 <div class="main__item--content">
                   <p class="main__text main__text--itemTitle grey--text">Velocidade dos Ventos</p>
                   <p class="main__text main__text--info bold" data-wind></p>
-                </div>
-              </li>
-              <li class="main__item">
-                <div class="main__item--image">
-                  <i class="main__icon icon icon--thermometer"></i>
-                </div>
-                <div class="main__item--content">
-                  <p class="main__text main__text--itemTitle grey--text">Sensação Térmica</p>
-                  <p class="main__text main__text--info bold" data-degrees-sensation></p>
-                </div>
-              </li>
-              <li class="main__item">
-                <div class="main__item--image">
-                  <i class="main__icon icon icon--pressure"></i>
-                </div>
-                <div class="main__item--content">
-                  <p class="main__text main__text--itemTitle grey--text">Pressão Atmosférica</p>
-                  <p class="main__text main__text--info bold" data-pressure></p>
                 </div>
               </li>
               <li class="main__item">
@@ -90,7 +87,7 @@
                   <i class="main__icon icon icon--precipitation"></i>
                 </div>
                 <div class="main__item--content">
-                  <p class="main__text main__text--itemTitle grey--text">Quantidade de Precipitação</p>
+                  <p class="main__text main__text--itemTitle grey--text">Total de Precipitação</p>
                   <p class="main__text main__text--info bold" data-precipitation></p>
                 </div>
               </li>
