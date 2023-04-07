@@ -132,7 +132,8 @@
   color: #ffffff;
 }
 
-.main__header--infos {
+.main__header--infos,
+.main--container--today {
   margin-bottom: 2rem;
 }
 
@@ -169,6 +170,35 @@
 
 .main__item--sun {
   background-color: var(--progress-bg);
+}
+
+.main__list--week {
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  gap: 1rem;
+}
+
+.main__item--week {
+  display: flex;
+  flex-direction: column;
+  background-color: var(--cards-bg);
+  border-radius: 14px;
+  padding: 1rem;
+  text-align: center;
+  gap: 1rem;
+}
+
+.main__icon--week {
+  margin: 0 auto;
+  width: 50px;
+  height: 50px;
+}
+
+.main--week--temperature {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.5rem;
+  font-size: 0.8rem;
 }
 
 .grey--text {
