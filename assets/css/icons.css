@@ -37,6 +37,15 @@
 .icon--sunset {
   background-image: url("../img/icons/por-do-sol.png");
 }
+
 .icon--sunrise {
   background-image: url("../img/icons/nascerdosol.png");
+}
+
+.icon--max--temperature {
+  background-image: url("../img/icons/aumento-de-temperatura.png");
+}
+
+.icon--min--temperature {
+  background-image: url("../img/icons/baixa-de-temperatura.png");
 }
