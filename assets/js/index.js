@@ -1,7 +1,16 @@
-import renderDateInfos from "./render/renderDateInfos.js";
-import renderOverwiewSection from "./render/renderOverviewSection.js";
-import renderAsideSection from "./render/renderAsideSection.js";
+import renderApp from "./render/renderApp.js";
 
-renderDateInfos();
-renderOverwiewSection("Rio de Janeiro");
-renderAsideSection("Rio de Janeiro");
+const handleChange = async (event) => {
+  event.preventDefault();
+
+  const inputValue = event.currentTarget.value;
+  await renderApp(inputValue);
+};
+
+const form = document.querySelector(".main__form");
+const searchInput = document.querySelector("#location");
+
+searchInput.addEventListener("change", handleChange);
+form.addEventListener("submit", (event) => event.preventDefault());
+
+renderApp();
