@@ -1,4 +1,4 @@
-import getDateInfo from "../utils/getDateInfo.js";
+import { getDateInfo } from "../utils/getDateInfo.js";
 
 function renderDateInfos() {
   const yearAndMonth = document.querySelector("[data-year]");
