@@ -1,16 +1,29 @@
-import getWeatherInfo from "../utils/getWeatherInfo.js";
+function getAsideElements() {
+  return {
+    cityLocation: document.querySelector("[data-location]"),
+    regionLocation: document.querySelector("[data-region]"),
+    weatherIcon: document.querySelector("[data-weather-icon]"),
+    weatherCondition: document.querySelector("[data-weather-condition]"),
+    degrees: document.querySelector("[data-degrees]"),
+    localTime: document.querySelector("[data-time]"),
+  };
+}
 
 function renderLocationWeather(
   { country, name, region, localtime },
   { temp_c },
   { text, icon }
 ) {
-  const cityLocation = document.querySelector("[data-location]");
-  const regionLocation = document.querySelector("[data-region]");
-  const weatherIcon = document.querySelector("[data-weather-icon]");
-  const weatherCondition = document.querySelector("[data-weather-condition]");
-  const degrees = document.querySelector("[data-degrees]");
-  const localTime = document.querySelector("[data-time]");
+  const asideElements = getAsideElements();
+
+  const {
+    cityLocation,
+    regionLocation,
+    localTime,
+    weatherIcon,
+    weatherCondition,
+    degrees,
+  } = asideElements;
 
   cityLocation.innerText = name;
   regionLocation.innerText = `${region}, ${country}`;
@@ -23,15 +36,14 @@ function renderLocationWeather(
 function renderRainExpectation(forecast, hourNow) {
   const rainSection = document.querySelector("[data-rain]");
   const list = document.createElement("ul");
+  const hours = forecast.forecastday[0].hour;
+  const maxIterations = 3;
   list.classList.add("main__list--rain");
 
-  const hours = forecast.forecast.forecastday[0].hour;
-  const maxIterations = 4;
-
-  for (let i = 1; i < maxIterations; i++) {
+  for (let i = 1; i < maxIterations + 1; i++) {
     const listItem = document.createElement("li");
-    listItem.classList.add("main__item--rain");
     const chanceOfRain = hours[hourNow + i].chance_of_rain;
+    listItem.classList.add("main__item--rain");
 
     listItem.innerHTML = `
       <p class="main__text grey--text">${hourNow + i}:00</p>
@@ -41,33 +53,26 @@ function renderRainExpectation(forecast, hourNow) {
 
     list.appendChild(listItem);
   }
-
   rainSection.appendChild(list);
 }
 
 function renderSunsetAndRise(forecast) {
   const sunriseElement = document.querySelector("[data-time-sunrise]");
   const sunsetElement = document.querySelector("[data-time-sunset]");
-  const { sunrise, sunset } = forecast.forecast.forecastday[0].astro;
+  const { sunrise, sunset } = forecast.forecastday[0].astro;
 
   sunriseElement.innerText = sunrise;
   sunsetElement.innerText = sunset;
 }
 
-async function renderAsideSection(location) {
+async function renderAsideSection(weather) {
   try {
     const hourNow = new Date().getHours();
-    const forecastInfo = await getWeatherInfo(location, "forecast.json");
-    const locationObject = await forecastInfo.location;
-    const currentObject = await forecastInfo.current;
+    const { location, current, forecast } = weather;
 
-    renderLocationWeather(
-      locationObject,
-      currentObject,
-      currentObject.condition
-    );
-    renderRainExpectation(forecastInfo, hourNow);
-    renderSunsetAndRise(forecastInfo);
+    renderLocationWeather(location, current, current.condition);
+    renderRainExpectation(forecast, hourNow);
+    renderSunsetAndRise(forecast);
   } catch (error) {
     console.log(error);
   }

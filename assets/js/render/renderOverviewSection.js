@@ -1,37 +1,34 @@
-import getWeatherInfo from "../utils/getWeatherInfo.js";
-
-function getOverviewElement() {
+function getOverviewElements() {
   return {
+    minTemperature: document.querySelector("[data-min-temperature]"),
+    maxTemperature: document.querySelector("[data-max-temperature]"),
     windSpeed: document.querySelector("[data-wind]"),
-    thermicSensation: document.querySelector("[data-degrees-sensation]"),
-    pressure: document.querySelector("[data-pressure]"),
     uvIndex: document.querySelector("[data-uv]"),
     humidityCondition: document.querySelector("[data-humidity]"),
     precipitation: document.querySelector("[data-precipitation]"),
   };
 }
 
-async function renderOverviewSection(location) {
-  const currentWeather = await getWeatherInfo(location, "current.json");
+async function renderOverviewSection(todayOverview) {
+  const { avghumidity, uv, totalprecip_mm, maxwind_kph, maxtemp_c, mintemp_c } =
+    todayOverview;
 
-  const { wind_kph, pressure_mb, uv, humidity, precip_mm, feelslike_c } =
-    currentWeather.current;
-  const overviewElements = getOverviewElement();
+  const overviewElements = getOverviewElements();
   const {
+    minTemperature,
+    maxTemperature,
     windSpeed,
-    thermicSensation,
-    pressure,
     uvIndex,
     humidityCondition,
     precipitation,
   } = overviewElements;
 
-  windSpeed.innerText = `${wind_kph} km/h`;
-  thermicSensation.innerText = `${feelslike_c}° C`;
-  pressure.innerText = `${pressure_mb} mbar`;
+  minTemperature.innerText = `${mintemp_c}° C`;
+  maxTemperature.innerText = `${maxtemp_c}° C`;
+  windSpeed.innerText = `${maxwind_kph} km/h`;
   uvIndex.innerText = `${uv}`;
-  humidityCondition.innerText = `${humidity}%`;
-  precipitation.innerText = `${precip_mm} mm`;
+  humidityCondition.innerText = `${avghumidity}%`;
+  precipitation.innerText = `${totalprecip_mm} mm`;
 }
 
 export default renderOverviewSection;
