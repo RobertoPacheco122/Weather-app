@@ -1,23 +1,23 @@
-function getDayName(dayNumber) {
+export function getDayName(dayNumber) {
   let day;
   switch (dayNumber) {
     case 0:
       day = "Domingo";
       break;
     case 1:
-      day = "Segunda-feira";
+      day = "Segunda";
       break;
     case 2:
-      day = "Terça-feira";
+      day = "Terça";
       break;
     case 3:
-      day = "Quarta-feira";
+      day = "Quarta";
       break;
     case 4:
-      day = "Quinta-feira";
+      day = "Quinta";
       break;
     case 5:
-      day = "Sexta-feira";
+      day = "Sexta";
       break;
     case 6:
       day = "Sábado";
@@ -28,7 +28,7 @@ function getDayName(dayNumber) {
   return day;
 }
 
-function getMonthName(monthNumber) {
+export function getMonthName(monthNumber) {
   let month;
   switch (monthNumber) {
     case 0:
@@ -73,7 +73,7 @@ function getMonthName(monthNumber) {
   return month;
 }
 
-function getDateInfo() {
+export function getDateInfo() {
   const date = new Date();
   return {
     dayNumber: date.getDay(),
@@ -84,5 +84,3 @@ function getDateInfo() {
     year: date.getFullYear(),
   };
 }
-
-export default getDateInfo;
