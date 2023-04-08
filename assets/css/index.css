@@ -174,7 +174,7 @@
 
 .main__list--week {
   display: grid;
-  grid-template-columns: repeat(6, 1fr);
+  grid-template-columns: repeat(3, 1fr);
   gap: 1rem;
 }
 
@@ -219,6 +219,12 @@
   color: #aaacaf;
 }
 
+@media screen and (min-width: 1300px) {
+  .main__list--week {
+    grid-template-columns: repeat(6, 1fr);
+  }
+}
+
 @media screen and (max-width: 900px) {
   .main--container {
     grid-template-columns: 1fr;
@@ -227,10 +233,6 @@
   .main--container--overview,
   .main--container--infos {
     padding: 1rem 1rem;
-  }
-
-  .main__list--week {
-    grid-template-columns: repeat(3, 1fr);
   }
 }
 
