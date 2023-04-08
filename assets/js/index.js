@@ -1,4 +1,5 @@
 import renderApp from "./render/renderApp.js";
+import getUserLocation from "./utils/getUserLocation.js";
 
 const handleChange = (event) => {
   event.preventDefault();
@@ -16,8 +17,10 @@ const handleChange = (event) => {
 
 const form = document.querySelector(".main__form");
 const searchInput = document.querySelector("#location");
+const gpsIconContainer = document.querySelector(".main--container--icon");
 
 searchInput.addEventListener("change", handleChange);
 form.addEventListener("submit", (event) => event.preventDefault());
+gpsIconContainer.addEventListener("click", () => getUserLocation());
 
 renderApp();
