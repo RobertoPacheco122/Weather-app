@@ -228,6 +228,10 @@
   .main--container--infos {
     padding: 1rem 1rem;
   }
+
+  .main__list--week {
+    grid-template-columns: repeat(3, 1fr);
+  }
 }
 
 @media screen and (max-width: 500px) {
