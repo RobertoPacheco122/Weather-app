@@ -1,10 +1,17 @@
 import renderApp from "./render/renderApp.js";
 
-const handleChange = async (event) => {
+const handleChange = (event) => {
   event.preventDefault();
-
+  const overviewSection = document.querySelector(".main__section--overview");
+  const asideSection = document.querySelector(".main--container--aside");
   const inputValue = event.currentTarget.value;
-  await renderApp(inputValue);
+
+  if (overviewSection && asideSection) {
+    overviewSection.remove();
+    asideSection.remove();
+  }
+
+  renderApp(inputValue);
 };
 
 const form = document.querySelector(".main__form");
